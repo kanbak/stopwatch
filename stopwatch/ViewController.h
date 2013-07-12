@@ -9,5 +9,20 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+{
+    bool timerIsRunning;
+    NSTimer *timer;
+    NSDate *startDate;
+}
+
+
+@property (strong,nonatomic) IBOutlet UILabel *timerLabel;
+
+
+
+
+
+ -(void) updateTimer;
+
 
 @end

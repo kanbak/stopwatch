@@ -35,7 +35,7 @@
 {
     [super viewDidLoad];
     
-    timerLabel.text = @"00.00.00";
+    timerLabel.text = @"00.00";
     timerIsRunning = false;
     startDate = [NSDate date];
     
@@ -47,6 +47,8 @@
 }
 
 - (IBAction)startButton:(id)sender {
+    [timer invalidate];
+    timer = nil;
     if(!timerIsRunning){
         timerIsRunning = true;
         
@@ -74,7 +76,7 @@
     NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:startDate];
     NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"mm:ss.SS"];
+    [dateFormatter setDateFormat:@"mm:ss"];
     NSString *timeString=[dateFormatter stringFromDate:timerDate];
     timerLabel.text = timeString;
     
@@ -85,7 +87,7 @@
     [timer invalidate]; //stop timer
     timer = nil;
     startDate = [NSDate date];
-    timerLabel.text = @"00.00.00";
+    timerLabel.text = @"00.00";
     timerIsRunning = false;
 }
 - (IBAction)pauseButton:(id)sender {
@@ -97,6 +99,11 @@
 
 
 - (IBAction)goToCountdownTimer:(id)sender {
+    [timer invalidate]; //stop timer
+    timer = nil;
+    startDate = [NSDate date];
+    timerLabel.text = @"00.00";
+    timerIsRunning = false;
     mySecondViewController = [[SecondViewController alloc] initWithNibName:nil bundle:nil];
     [self.view addSubview:mySecondViewController.view];
     

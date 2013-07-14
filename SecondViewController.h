@@ -11,10 +11,13 @@
 
 @interface SecondViewController : UIViewController
 {
-    bool countdownTimerRunning;
-    NSTimer *countdownTimer;
-    int *countSeconds;
+    NSTimer *timer;
+    IBOutlet UILabel *CountDownLabel;
 }
+
+@property (nonatomic, retain) UILabel *CountDownLabel;
+-(void)updateCounter:(NSTimer *)theTimer;
+
 
 
 

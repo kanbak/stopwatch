@@ -4,7 +4,7 @@
 //
 //  Created by Umut Kanbak on 7/11/13.
 //  Copyright (c) 2013 Umut Kanbak. All rights reserved.
-//  
+//
 
 
 #import "ViewController.h"
@@ -36,7 +36,7 @@
     [super viewDidLoad];
     
     timerLabel.text = @"00.00.00";
-    timerIsRunning = FALSE;
+    timerIsRunning = false;
     startDate = [NSDate date];
     
 }
@@ -48,22 +48,21 @@
 
 - (IBAction)startButton:(id)sender {
     if(!timerIsRunning){
-        timerIsRunning = TRUE;
+        timerIsRunning = true;
         
-       if (timer == nil) {
-           timer = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0
-                                                         target:self
-                                                       selector:@selector(updateTimer)
-                                                       userInfo:nil
-                                                        repeats:YES];  
-        }  
+        if (timer == nil) {
+            timer = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0
+                                                     target:self
+                                                   selector:@selector(updateTimer)
+                                                   userInfo:nil
+                                                    repeats:YES];
+        }
     }else{
         
-       timerIsRunning = false;
-       timer = false;
-       [timer invalidate]; //stop timer
+        timerIsRunning = false;
+        [timer invalidate]; //stop timer
         timer = nil;
-       return;
+        return;
         
     }
     
@@ -78,7 +77,8 @@
     [dateFormatter setDateFormat:@"mm:ss.SS"];
     NSString *timeString=[dateFormatter stringFromDate:timerDate];
     timerLabel.text = timeString;
-
+    
+    
 }
 
 -(IBAction)stopButton:(id)sender{
@@ -86,18 +86,19 @@
     timer = nil;
     startDate = [NSDate date];
     timerLabel.text = @"00.00.00";
-    timerIsRunning = FALSE;
+    timerIsRunning = false;
 }
 - (IBAction)pauseButton:(id)sender {
     [timer invalidate];
-    timerIsRunning = NO;
-   
-    
+    timer = false;
+    timerIsRunning = false;
 }
+
+
 
 - (IBAction)goToCountdownTimer:(id)sender {
     mySecondViewController = [[SecondViewController alloc] initWithNibName:nil bundle:nil];
     [self.view addSubview:mySecondViewController.view];
-
+    
 }
 @end

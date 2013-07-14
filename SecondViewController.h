@@ -10,5 +10,13 @@
 #import "ViewController.h"
 
 @interface SecondViewController : UIViewController
+{
+    bool countdownTimerRunning;
+    NSTimer *countdownTimer;
+    int *countSeconds;
+}
+
+
 
 @end
+

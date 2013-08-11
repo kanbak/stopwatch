@@ -62,7 +62,7 @@
     }else{
         
         timerIsRunning = false;
-        [timer invalidate]; //stop timer
+        [timer invalidate]; 
         timer = nil;
         return;
         
